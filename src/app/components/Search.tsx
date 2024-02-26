@@ -53,7 +53,7 @@ export default function Search() {
         <div className="m-auto w-[80vw]">
             <input
                 className="w-full border-[1px] px-2 py-2 rounded-lg placeholder:font-[300] text-sm lg:text-sm"
-                onChange={(event) => fetchSearch(event.target.value)}
+                onChange={(event) => searchTrack(event.target.value)}
                 onFocus={() => setSearchOpen(true)}
                 placeholder="Search for songs..."
             />
