@@ -1,5 +1,8 @@
 "use client"
 import { useState } from "react";
+import { debounce } from "lodash";
+import SelectedTracks from "./Tracks";
+import { RecommendButton } from "./RecommendButton"
 
 export default function Search() {
     const [searchResults, setSearchResults] = useState(new Array());
@@ -42,6 +45,10 @@ export default function Search() {
         console.log(selectedTracks);
     }
 
+    const searchTrack = debounce((value) => {
+        fetchSearch(value)
+    }, 500)
+
     return (
         <div className="m-auto w-[80vw]">
             <input
@@ -49,7 +56,7 @@ export default function Search() {
                 onChange={(event) => fetchSearch(event.target.value)}
                 onFocus={() => setSearchOpen(true)}
                 placeholder="Search for songs..."
-            ></input>
+            />
             {searchOpen ? (
                 <ul className="max-w-xl absolute w-full z-20 bg-white flex flex-col gap-2 border-[1px] rounded-lg mt-3">
                     {searchResults?.map((item: any) => (
@@ -82,7 +89,11 @@ export default function Search() {
                     ))}
                 </ul>
             ) : null}
-            
+            <SelectedTracks
+                selectedTracks={selectedTracks}
+                setSelectedTracks={setSelectedTracks}
+            />
+            {selectedTracks.length > 0 ? <RecommendButton selectedTracks={selectedTracks} /> : null}
         </div>
     );
 }
