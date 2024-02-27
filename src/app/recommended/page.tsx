@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Tracks } from "../components/tracks/index";
+import Footer from "../components/Footer";
 
 export default function Home() {
 
@@ -11,6 +12,7 @@ export default function Home() {
                 className="mt-4 ml-4"
                 href="/">{"<- Back"}</Link>
             <Tracks />
+            <Footer />
         </main>
     );
 }
