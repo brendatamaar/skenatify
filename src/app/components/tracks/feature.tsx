@@ -18,14 +18,13 @@ export default function Features({ track }: Props) {
             <FeatureTag>
                 🥁 {features?.tempo?.toString().split(".")[0]} BPM
             </FeatureTag>
-            <FeatureTag>⏱️ {msToMinSec(features?.duration_ms)}s</FeatureTag>
-            <FeatureTag>🖋️ {features?.time_signature}/4</FeatureTag>
+            <FeatureTag>⏱️ {msToMinSec(features?.duration_ms)}</FeatureTag>
             <FeatureTag>
                 👀 {formatPercentage(track.popularity / 100)} Popular
             </FeatureTag>
             <FeatureTag>
                 🎹 {features?.key ? Keys[features?.key] : ""}
-                {features?.mode == 0 ? " Min" : " Maj"}
+                {features?.mode == 0 ? " Minor" : " Major"}
             </FeatureTag>
             <FeatureTag>
                 🕺🏾 {formatPercentage(features?.danceability)} Danceable

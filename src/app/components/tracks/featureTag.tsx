@@ -7,9 +7,7 @@ type Props = {
 export default function featureTag({ children }: Props) {
     return (
         <Badge>
-            <p className="">
-                {children}
-            </p>
+            {children}
         </Badge>
     );
 }
