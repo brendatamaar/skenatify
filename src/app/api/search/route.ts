@@ -8,7 +8,7 @@ export async function GET(request: NextRequest, searchQuery: string) {
 
         const items = await Spotify.search(
             searchQuery,
-            ["track"],
+            ["artist"],
             undefined,
             5
         );

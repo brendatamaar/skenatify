@@ -3,6 +3,7 @@ import { useState } from "react";
 import { debounce } from "lodash";
 import SelectedTracks from "./Tracks";
 import { RecommendButton } from "./RecommendButton"
+import { Input } from "@/components/ui/input"
 
 export default function Search() {
     const [searchResults, setSearchResults] = useState(new Array());
@@ -21,10 +22,10 @@ export default function Search() {
             setSearchOpen(true)
 
             setSearchResults(
-                searchResponse.tracks.items.map((item: any) => ({
-                    artist: item.artists.at(0)?.name,
+                searchResponse.artists.items.map((item: any) => ({
+                    artist: item.name,
                     name: item.name,
-                    cover: item.album.images.at(1)?.url,
+                    cover: item.images.at(1)?.url,
                     id: item.id,
                 }))
             );
@@ -41,8 +42,6 @@ export default function Search() {
 
         setSelectedTracks([...selectedTracks, ...tracksArray]);
         setSearchOpen(false)
-
-        console.log(selectedTracks);
     }
 
     const searchTrack = debounce((value) => {
@@ -50,13 +49,11 @@ export default function Search() {
     }, 500)
 
     return (
-        <div className="m-auto w-[80vw]">
-            <input
-                className="w-full border-[1px] px-2 py-2 rounded-lg placeholder:font-[300] text-sm lg:text-sm"
+        <div className="px-4 lg:px-12 ">
+            <Input className="w-full"
                 onChange={(event) => searchTrack(event.target.value)}
                 onFocus={() => setSearchOpen(true)}
-                placeholder="Search for songs..."
-            />
+                placeholder="Search for songs..." />
             {searchOpen ? (
                 <ul className="max-w-xl absolute w-full z-20 bg-white flex flex-col gap-2 border-[1px] rounded-lg mt-3">
                     {searchResults?.map((item: any) => (
