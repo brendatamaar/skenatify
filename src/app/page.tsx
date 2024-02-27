@@ -3,9 +3,9 @@ import Search from "./components/Search";
 
 export default function Home() {
   return (
-    <main>
-      <Header/>
-      <Search/>
+    <main className="min-h-svh">
+      <Header />
+      <Search />
     </main>
   );
 }

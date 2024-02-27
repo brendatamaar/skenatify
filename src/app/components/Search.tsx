@@ -42,25 +42,28 @@ export default function Search() {
 
         setSelectedTracks([...selectedTracks, ...tracksArray]);
         setSearchOpen(false)
+        setSearchResults([]);
     }
 
     const searchTrack = debounce((value) => {
         fetchSearch(value)
     }, 500)
 
+
     return (
-        <div className="px-4 lg:px-12 ">
+        <div className="px-4 lg:px-12 mt-12">
             <Input className="w-full"
                 onChange={(event) => searchTrack(event.target.value)}
                 onFocus={() => setSearchOpen(true)}
-                placeholder="Search for songs..." />
+                onBlur={(event) => event.target.value = ''}
+                placeholder="Search for artists... (up to 5)" />
             {searchOpen ? (
-                <ul className="max-w-xl absolute w-full z-20 bg-white flex flex-col gap-2 border-[1px] rounded-lg mt-3">
+                <ul className="w-full z-20 bg-white flex flex-col gap-2 rounded-xl border-[1px] mt-3">
                     {searchResults?.map((item: any) => (
                         <button
                             key={item.id}
-                            onClick={(event) => setTracks(item)}
-                            className="max-w-xl hover:bg-gray-100 rounded-2xl flex flex-row items-center p-2"
+                            onClick={() => setTracks(item)}
+                            className="w-full hover:bg-gray-100 rounded-xl flex flex-row items-center p-2"
                         >
                             <img className="w-12 h-12 rounded-lg" src={item.cover}></img>
                             <div className="flex flex-col items-start pl-4 overflow-hidden grow">
@@ -90,7 +93,7 @@ export default function Search() {
                 selectedTracks={selectedTracks}
                 setSelectedTracks={setSelectedTracks}
             />
-            {selectedTracks.length > 0 ? <RecommendButton selectedTracks={selectedTracks} /> : null}
+            <RecommendButton selectedTracks={selectedTracks} />
         </div>
     );
 }
