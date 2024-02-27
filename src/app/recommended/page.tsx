@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link"
-import { Tracks } from "./../components/tracks/index";
+import { Tracks } from "../components/tracks/index";
 
 export default function Home() {
 

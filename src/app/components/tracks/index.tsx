@@ -1,16 +1,10 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 import Image from "next/image";
+import Features from "./feature";
 
 export function Tracks() {
     const [FetchedTracks, setFetchedTracks] = useState(new Array());
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const variants = {
-        enter: { opacity: 0, x: 0 },
-        center: { opacity: 1, x: 0 },
-        exit: { opacity: 0, x: 1200 },
-    };
 
     useEffect(() => {
         const fetchTracks = async () => {
@@ -31,26 +25,49 @@ export function Tracks() {
         fetchTracks();
     }, []);
 
-    console.log(FetchedTracks);
     return FetchedTracks ? (
-        <div className="md:flex-row flex flex-col m-auto md:mx-12 lg:mx-auto lg:mt-[24vh] gap-6 lg:gap-12 mt-12">
-            {Object.entries(FetchedTracks).map(([idTrack, tracks]) => (
-                <div
-                    className="my-2 px-2 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 hover:bg-gray-100"
-                    key={idTrack}
-                >
-                    <h1>{tracks.name}</h1>
-                    <p>{tracks.artists.at(0)?.name}</p>
-                    <Image
-                        width={100}
-                        height={100}
-                        alt="Placeholder"
-                        className="w-36 h-64 lg:w-24 lg:h-32 rounded-lg object-cover mx-auto mb-2"
-                        src={tracks?.album.images.at(1)?.url}
-                    />
-                </div>
-            ))}
-        </div>
+        <section
+            id="recommendations"
+            className="flex p-4 col-span-2 lg:col-span-4"
+        >
+            <div className="flex-1 pb-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+                {Object.entries(FetchedTracks).map(([idTrack, tracks]) => (
+                    <div key={idTrack} className="text-left relative flex flex-col mt-2 rounded bg-shell-200 hover:bg-shell-200/50 transition-all duration-150">
+                        <div className="flex items-start cursor-pointer md:flex-col hover:bg-gray-100">
+                            <div className="w-32 h-32 md:w-full md:h-auto">
+                                <Image
+                                    width={300}
+                                    height={300}
+                                    className="w-full"
+                                    alt="Placeholder"
+                                    src={tracks?.album.images.at(1)?.url}
+                                />
+                            </div>
+
+                            <div className="flex flex-col p-2">
+                                <h2 className="text-sm font-bold md:text-base line-clamp-1">{tracks.name}</h2>
+                                <p className="text-sm font-medium text-shell-600">
+                                    <span className="text-shell-600 transition-all duration-150 hover:text-shell-400">
+                                        {tracks.artists.at(0)?.name}
+                                    </span>
+                                </p>
+                                <p className="text-xs font-medium line-clamp-1 text-shell-600">
+                                    {tracks.album.name}
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div className="flex-1 bg-shell-300">
+                            <Features track={tracks} />
+                        </div>
+                    </div>
+                ))}
+                <div className="md:h-24" />
+            </div>
+        </section>
+
+
     ) : (
         <div></div>
     );
