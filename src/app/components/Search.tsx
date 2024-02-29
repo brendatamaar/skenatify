@@ -66,7 +66,7 @@ export default function Search() {
                         <Input type="search" onChange={(event) => searchTrack(event.target.value)}
                             onFocus={() => setSearchOpen(true)}
                             onBlur={(event) => event.target.value = ''}
-                            placeholder="Pilih artis favoritmu... (maks 5 artis)" />
+                            placeholder="Pilih artis favoritmu... (maks 5)" />
                     </label>
                 </form>
                 {searchOpen ? (
