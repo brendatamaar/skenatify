@@ -13,6 +13,7 @@ export default function Home() {
                 href="/">{"<- Back"}</Link>
             <Tracks />
             <Footer />
+            <div className="absolute -top-9 left-1/2 -translate-x-1/2 -translate-y-full bg-[#d9faa1] blur-[110px] w-[428px] h-[428px] rounded-full"></div>
         </main>
     );
 }
