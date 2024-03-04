@@ -5,7 +5,6 @@ import SelectedTracks from "./Tracks";
 import { RecommendButton } from "./RecommendButton"
 import { Input } from "@/components/ui/input"
 import { MagnifyingGlassIcon, PlusIcon } from "@radix-ui/react-icons"
-
 export default function Search() {
     const [searchResults, setSearchResults] = useState(new Array());
     const [selectedTracks, setSelectedTracks] = useState(new Array());
@@ -66,7 +65,7 @@ export default function Search() {
                         <Input type="search" onChange={(event) => searchTrack(event.target.value)}
                             onFocus={() => setSearchOpen(true)}
                             onBlur={(event) => event.target.value = ''}
-                            placeholder="Pilih artis favoritmu... (maks 5)" />
+                            placeholder="Pilih artis favoritmu (maks 5)" />
                     </label>
                 </form>
                 {searchOpen ? (
@@ -85,7 +84,7 @@ export default function Search() {
                                     <ul className="text-gray-500">{item.artist}</ul>
                                 </div>
                                 <a className="grow flex justify-end">
-                                    <PlusIcon className="w-6 h-6"/>
+                                    <PlusIcon className="w-6 h-6" />
                                 </a>
                             </button>
                         ))}
@@ -98,7 +97,6 @@ export default function Search() {
                 />
 
                 <RecommendButton selectedTracks={selectedTracks} />
-
                 <div className="absolute -top-9 left-1/2 -translate-x-1/2 -translate-y-full bg-[#d9faa1] blur-[110px] w-[428px] h-[428px] rounded-full"></div>
             </div>
         </section>

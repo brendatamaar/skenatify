@@ -26,7 +26,7 @@ export function RecommendButton({ selectedTracks }: any) {
                 onClick={() => handleRecommend(selectedTracks)}
                 className="flex items-center bg-[#d9faa1] rounded-[32px] hover:bg-black hover:text-white"
             >
-                <span className="mr-1.5 md:mr-2 ">Cari sekarang!</span>
+                <span className="mr-1.5 md:mr-2 ">Cari sekarang</span>
                 <ArrowRightIcon className="w-[14px] h-[14px] md:w-4 md:h-4 lg:w-5 lg:h-5" />
             </Button>
         </div>

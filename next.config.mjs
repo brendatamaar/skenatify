@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
+        unoptimized: true,
         remotePatterns: [
             {
                 protocol: "https",
@@ -8,6 +9,12 @@ const nextConfig = {
                 port: "",
                 pathname: "/image/**",
             },
+            {
+                protocol: "https",
+                hostname: "cdn.trakteer.id",
+                port: "",
+                pathname: "/images/**",
+            }
         ],
     },
 };

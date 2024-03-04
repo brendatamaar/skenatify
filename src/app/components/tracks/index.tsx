@@ -46,6 +46,7 @@ export function Tracks() {
                             <CardHeader>
                                 <div className="w-32 h-32 md:w-full md:h-auto">
                                     <Image
+                                        unoptimized
                                         width={300}
                                         height={300}
                                         className="w-full"

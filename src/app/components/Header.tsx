@@ -1,3 +1,5 @@
+
+import Image from "next/image";
 export default function Header() {
     return (
         <header className="relative z-50 leading-none font-medium tracking-[-0.41px] ">
@@ -6,9 +8,10 @@ export default function Header() {
                     <a href="/" className="flex md:flex-1">
                         Skenatify
                     </a>
+                    
                     <div className="flex items-center justify-end flex-1 text-sm">
                         <a href="/about">
-                        Tentang
+                            Tentang
                         </a>
                     </div>
                 </nav>

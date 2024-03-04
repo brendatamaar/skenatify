@@ -1,11 +1,11 @@
-import Link from "next/link";
+import Image from "next/image";
 import Header from "../components/Header";
 
 export default async function AboutPage() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-start gap-8 bg-gray-100">
             <header className="w-full text-center text-black">
-                <Header/>
+                <Header />
             </header>
 
             <div className="px-4">
@@ -18,6 +18,16 @@ export default async function AboutPage() {
                 </p>
                 <br />
                 <p className="text-justify"><b>Tech Stack:</b> Next.js, Typescript, Tailwind, shadcn/ui, Spotify API</p>
+                <br />
+                <span>Dukung saya di: </span><a href="https://trakteer.id/brendatamaar/tip?open=true" target="_blank">
+                    <Image
+                        width={120}
+                        height={120}
+                        priority={true}
+                        alt="Trakteer Saya"
+                        src="https://cdn.trakteer.id/images/embed/trbtn-red-1.png?date=18-11-2023"
+                    />
+                </a>
             </div>
 
             <hr className="my-12" />
