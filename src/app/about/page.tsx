@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Header from "../components/Header";
 
+import Footer from "../components/Footer";
+
 export default async function AboutPage() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-start gap-8 bg-gray-100">
-            <header className="w-full text-center text-black">
+        <main className="flex min-h-screen flex-col items-center justify-start gap-8 bg-gray-100 dark:bg-slate-800">
+            <header className="w-full text-center">
                 <Header />
             </header>
 
@@ -32,16 +34,7 @@ export default async function AboutPage() {
 
             <hr className="my-12" />
             <div className="absolute -top-9 left-1/2 -translate-x-1/2 -translate-y-full bg-[#d9faa1] blur-[110px] w-[428px] h-[428px] rounded-full"></div>
-            <p className="fixed bottom-0 left-0 right-0 block border-t border-t-muted bg-white p-5 text-right text-sm text-muted-foreground print:hidden">
-                &copy; 2024 -{" "}
-                <a
-                    className="underline"
-                    href="https://brendatama.vercel.app"
-                    target="_blank"
-                >
-                    Brendatama Akbar
-                </a>
-            </p>
+            <Footer />
         </main>
     );
 }

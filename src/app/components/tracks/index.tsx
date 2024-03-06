@@ -56,7 +56,7 @@ export function Tracks() {
                                 <CardTitle>
                                     <h2 className="text-sm font-bold md:text-base line-clamp-1">{tracks.name}</h2>
                                     <p className="text-sm font-medium text-shell-600">
-                                        <span className="text-shell-600 transition-all duration-150 hover:text-shell-400">
+                                        <span className="text-shell-600 transition-all hover:text-shell-400">
                                             {tracks.artists.at(0)?.name}
                                         </span>
                                     </p>
