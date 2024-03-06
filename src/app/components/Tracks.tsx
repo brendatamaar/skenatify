@@ -27,7 +27,7 @@ export default function SelectedTracks({
                 ? selectedTracks?.map((track: any) => (
                     <div
                         key={track.id}
-                        className="rounded-xl border-[1px] w-fit p-2 text-sm flex items-center bg-gray-100 dark:text-black"
+                        className="rounded-xl border-[1px] w-fit p-2 text-sm flex items-center bg-gray-100 dark:text-white dark:bg-slate-800"
                     >
                         <img className="w-8 h-8 rounded-lg mr-2" src={track.cover}></img>
                         <p className="pl-1">{track.name}</p>

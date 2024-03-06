@@ -87,7 +87,7 @@ export default function Search() {
                             placeholder="Pilih artis favoritmu (maks 5)" />
                     </label>
                     <Sheet>
-                        <SheetTrigger>Filter</SheetTrigger>
+                        <SheetTrigger className="text-gray-500">Filter</SheetTrigger>
                         <SheetContent>
                             <SheetHeader>
                                 <SheetTitle>Filter pencarian</SheetTitle>

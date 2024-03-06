@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
         // );
 
         const redirectUrl = new URL(
-            `http://localhost:3000/recommended?share=${shorterURL}`
+            `https://skenatify.vercel.app/recommended?share=${shorterURL}`
         );
         return NextResponse.redirect(redirectUrl);
 
