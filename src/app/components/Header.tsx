@@ -7,8 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Header() {
 
-    const { systemTheme, theme, setTheme } = useTheme();
-    const currentTheme = theme === 'system' ? systemTheme : theme;
+    const { theme, setTheme } = useTheme();
 
     return (
         <header className="relative z-50 leading-none font-medium tracking-[-0.41px] ">

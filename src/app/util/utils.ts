@@ -1,10 +1,3 @@
-import {
-    Recommendations,
-    TrackAudioFeatureList,
-    TrackAudioFeatures,
-} from "./spotify/client/tracks";
-import { Track, TrackID } from "./spotify/types";
-
 export function formatPercentage(value: number | undefined) {
     value = !value ? 0 : value > 1 ? value / 100 : value;
     return new Intl.NumberFormat("en", {
@@ -30,26 +23,4 @@ export function isExpired(expiresAt: string | number): boolean {
     const exp = new Date(expiresAt).valueOf();
     const now = new Date().valueOf() / 1000;
     return exp < now;
-}
-
-type TrackWithFeatures = Track & {
-    features: TrackAudioFeatures;
-};
-
-export function addFeaturesToRecommendations(
-    recs: Recommendations,
-    feats: TrackAudioFeatureList
-): TrackWithFeatures[] {
-    let result: Record<TrackID, TrackWithFeatures> = {};
-
-    recs.tracks.map((t: Track) => {
-        result[t.id] = { ...t, features: {} as TrackAudioFeatures };
-    });
-
-    feats.audio_features.map((f: TrackAudioFeatures) => {
-        const track = result[f.id];
-        result[f.id] = { ...track, features: f };
-    });
-
-    return Object.values(result);
 }

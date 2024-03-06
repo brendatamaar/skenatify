@@ -30,6 +30,7 @@ export async function GET(request: NextRequest) {
     const popularity = RecommendationsParamsSearch.get(
         "popularity"
     ) as string;
+    
     try {
 
         RecommendationsCall = await Spotify.recommendations.get({

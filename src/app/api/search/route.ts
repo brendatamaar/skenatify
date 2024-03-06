@@ -2,12 +2,13 @@ import { Spotify } from "@/app/consts";
 import { type NextRequest } from 'next/server'
 
 export async function GET(request: NextRequest, searchQuery: string) {
+    const searchQ = request.nextUrl.searchParams.get('searchQuery') as string;
+
     try {
 
-        const searchQuery = request.nextUrl.searchParams.get('searchQuery') as string;
-
+        
         const items = await Spotify.search(
-            searchQuery,
+            searchQ,
             ["artist"],
             "ID",
             5
