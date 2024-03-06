@@ -5,8 +5,6 @@ import Features from "./feature";
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
@@ -52,7 +50,7 @@ export function Tracks() {
                                         className="w-full"
                                         priority={true}
                                         alt="Placeholder"
-                                        src={tracks?.album.images.at(1)?.url}
+                                        src={tracks?.album.images.at(0)?.url}
                                     />
                                 </div>
                                 <CardTitle>

@@ -1,5 +1,4 @@
 
-import Image from "next/image";
 export default function Header() {
     return (
         <header className="relative z-50 leading-none font-medium tracking-[-0.41px] ">

@@ -5,11 +5,30 @@ import SelectedTracks from "./Tracks";
 import { RecommendButton } from "./RecommendButton"
 import { Input } from "@/components/ui/input"
 import { MagnifyingGlassIcon, PlusIcon } from "@radix-ui/react-icons"
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+    SheetFooter,
+    SheetClose
+} from "@/components/ui/sheet"
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+
 export default function Search() {
     const [searchResults, setSearchResults] = useState(new Array());
     const [selectedTracks, setSelectedTracks] = useState(new Array());
     const [searchOpen, setSearchOpen] = useState(false);
-
+    const [tempo, setTempo] = useState("140");
+    const [accoustic, setAccoustic] = useState("60");
+    const [dance, setDance] = useState("80");
+    const [energy, setEnergy] = useState("80");
+    const [instrumental, setInstrumental] = useState("0");
+    const [loud, setLoud] = useState("0");
+    const [popularity, setPopularity] = useState("50");
 
     async function fetchSearch(searchQuery: string) {
         try {
@@ -67,6 +86,71 @@ export default function Search() {
                             onBlur={(event) => event.target.value = ''}
                             placeholder="Pilih artis favoritmu (maks 5)" />
                     </label>
+                    <Sheet>
+                        <SheetTrigger>Filter</SheetTrigger>
+                        <SheetContent>
+                            <SheetHeader>
+                                <SheetTitle>Filter pencarian</SheetTitle>
+                                <SheetDescription>
+                                    Ubah filter pencarian sesuai keinginanmu😉
+                                </SheetDescription>
+                            </SheetHeader>
+
+                            <div className="flex justify-between w-full mt-6">
+                                <Label>Tempo🥁</Label>
+                                <Label>{tempo} BPM</Label>
+                            </div>
+                            <Input type="range" className="h-2 w-full cursor-ew-resize rounded-lg disabled:cursor-not-allowed" min="0" max="220" defaultValue={tempo}
+                                onChange={(event) => setTempo(event.target.value)} />
+
+                            <div className="flex justify-between w-full">
+                                <Label>Acousticness Level🎸</Label>
+                                <Label>{accoustic} %</Label>
+                            </div>
+                            <Input type="range" className="h-2 w-full cursor-ew-resize rounded-lg disabled:cursor-not-allowed" min="0" max="100" defaultValue={accoustic}
+                                onChange={(event) => setAccoustic(event.target.value)} />
+
+                            <div className="flex justify-between w-full">
+                                <Label>Danceability Level🕺</Label>
+                                <Label>{dance} %</Label>
+                            </div>
+                            <Input type="range" className="h-2 w-full cursor-ew-resize rounded-lg disabled:cursor-not-allowed" min="0" max="100" defaultValue={dance}
+                                onChange={(event) => setDance(event.target.value)} />
+
+                            <div className="flex justify-between w-full">
+                                <Label>Energy Level⚡</Label>
+                                <Label>{energy} %</Label>
+                            </div>
+                            <Input type="range" className="h-2 w-full cursor-ew-resize rounded-lg disabled:cursor-not-allowed" min="0" max="100" defaultValue={energy}
+                                onChange={(event) => setEnergy(event.target.value)} />
+
+                            <div className="flex justify-between w-full">
+                                <Label>Instrumentalness Level🎻</Label>
+                                <Label>{instrumental} %</Label>
+                            </div>
+                            <Input type="range" className="h-2 w-full cursor-ew-resize rounded-lg disabled:cursor-not-allowed" min="0" max="100" defaultValue={instrumental}
+                                onChange={(event) => setInstrumental(event.target.value)} />
+
+                            <div className="flex justify-between w-full">
+                                <Label>Loudness Level🔊</Label>
+                                <Label>{loud} %</Label>
+                            </div>
+                            <Input type="range" className="h-2 w-full cursor-ew-resize rounded-lg disabled:cursor-not-allowed" min="0" max="100" defaultValue={loud}
+                                onChange={(event) => setLoud(event.target.value)} />
+
+                            <div className="flex justify-between w-full">
+                                <Label>Popularity Level⭐</Label>
+                                <Label>{popularity} %</Label>
+                            </div>
+                            <Input type="range" className="h-2 w-full cursor-ew-resize rounded-lg disabled:cursor-not-allowed" min="0" max="100" defaultValue={popularity}
+                                onChange={(event) => setPopularity(event.target.value)} />
+                            <SheetFooter>
+                                <SheetClose asChild>
+                                    <Button>Simpan</Button>
+                                </SheetClose>
+                            </SheetFooter>
+                        </SheetContent>
+                    </Sheet>
                 </form>
                 {searchOpen ? (
                     <ul className="max-w-[848px] pr-2 mx-auto z-20 bg-white flex flex-col gap-2 rounded-xl border-[1px]">
@@ -96,7 +180,15 @@ export default function Search() {
                     setSelectedTracks={setSelectedTracks}
                 />
 
-                <RecommendButton selectedTracks={selectedTracks} />
+                <RecommendButton
+                    selectedTracks={selectedTracks}
+                    tempo={tempo}
+                    accoustic={accoustic}
+                    dance={dance}
+                    energy={energy}
+                    instrumental={instrumental}
+                    loud={loud}
+                    popularity={popularity} />
                 <div className="absolute -top-9 left-1/2 -translate-x-1/2 -translate-y-full bg-[#d9faa1] blur-[110px] w-[428px] h-[428px] rounded-full"></div>
             </div>
         </section>
