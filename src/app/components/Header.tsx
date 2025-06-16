@@ -27,7 +27,7 @@ export default function Header() {
                     
                     <div className="flex items-center justify-end flex-1 text-sm">
                         <a href="/about">
-                            Tentang
+                            About
                         </a>
                     </div>
                 </nav>
